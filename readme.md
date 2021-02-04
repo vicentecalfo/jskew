@@ -187,20 +187,6 @@ ipni
 	.catch((error) => console.log(error));
 ```
 
-### API error handling
-You can access the status code.
-```javascript
-ipni
-	.name({ genus: 'Poa', species: 'annua' })
-	.toPromise()
-	.then((data) => {
-        const statusCode = data.response.statusCode; 
-        // example: 249 > too many requests, now you can retry after X seconds
-        // Do something with the status code result.
-	})
-	.catch((error) => console.log(error));
-```
-
 ### POWO
 [http://www.plantsoftheworldonline.org](http://www.plantsoftheworldonline.org)
 
@@ -320,3 +306,18 @@ powo.name(
 * genera
 * species
 * infraspecies
+
+### API error handling
+You can access the status code.
+**Sample**
+```javascript
+ipni
+	.name({ genus: 'Poa', species: 'annua' })
+	.toPromise()
+	.then((data) => {
+        const statusCode = data.response.statusCode; 
+        // example: 249 > too many requests, now you can retry after X seconds
+        // Do something with the status code result.
+	})
+	.catch((error) => console.log(error));
+```
