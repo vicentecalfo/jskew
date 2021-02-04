@@ -12,7 +12,7 @@ import { Request } from '../request';
  * @public
  */
 export class Ipni {
-	private request = new Request('http://beta.ipni.org/api/1/search');
+	private request = new Request('http://beta.ipni.org/api/1');
 	/**
 	 * @constructor
 	 */
@@ -24,7 +24,7 @@ export class Ipni {
 	 * @param {array} filters Array of filters available in the APIs. 
 	 */
 	name(qs: NameQuery, filters: string[] = []): Observable<RxHttpRequestResponse<NameResult>> {
-		return this.request.get(qs, NameTerms, filters, FiltersTerms);
+		return this.request.get('search', qs, NameTerms, filters, FiltersTerms);
 	}
 
 	/**
@@ -33,7 +33,7 @@ export class Ipni {
 	 * @param {array} filters Array of filters available in the APIs. 
 	 */
 	author(qs: AuthorQuery, filters: string[] = []): Observable<RxHttpRequestResponse<AuthorResult>> {
-		return this.request.get(qs, AuthorTerms, filters, FiltersTerms);
+		return this.request.get('search', qs, AuthorTerms, filters, FiltersTerms);
 	}
 
 	/**
@@ -42,6 +42,6 @@ export class Ipni {
 	 * @param {array} filters Array of filters available in the APIs. 
 	 */
 	pub(qs: PubQuery, filters: string[] = []): Observable<RxHttpRequestResponse<PubResult>> {
-		return this.request.get(qs, PubTerms, filters, FiltersTerms);
+		return this.request.get('search', qs, PubTerms, filters, FiltersTerms);
 	}
 }

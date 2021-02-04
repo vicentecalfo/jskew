@@ -4,7 +4,7 @@ import { Request } from '../request';
 import { CharacteristicQuery, CharacteristicResult } from './characteristic.interface';
 import { GeographyQuery, GeographyResult } from './geography.interface';
 import { NameQuery, NameResult } from './name.interface';
-import { CharacteristicTerms, FiltersTerms, GeographyTerms, NameTerms } from './terms';
+import { CharacteristicTerms, FiltersTerms, GeographyTerms, LookupTerms, NameTerms } from './terms';
 
 /**
  * Class for searching POWO data and looking up individual records. (http://www.plantsoftheworldonline.org/) 
@@ -12,7 +12,7 @@ import { CharacteristicTerms, FiltersTerms, GeographyTerms, NameTerms } from './
  * @public
  */
 export class Powo {
-	private request = new Request('http://www.plantsoftheworldonline.org/api/2/search');
+	private request = new Request('http://www.plantsoftheworldonline.org/api/2');
 	/**
 	 * @constructor
 	 */
@@ -24,7 +24,7 @@ export class Powo {
 	 * @param {array} filters Array of filters available in the APIs. 
 	 */
 	name(qs: NameQuery, filters: string[] = []): Observable<RxHttpRequestResponse<NameResult>> {
-		return this.request.get(qs, NameTerms, filters, FiltersTerms);
+		return this.request.get('search', qs, NameTerms, filters, FiltersTerms);
 	}
 
 	/**
@@ -36,7 +36,7 @@ export class Powo {
 		qs: CharacteristicQuery,
 		filters: string[] = []
 	): Observable<RxHttpRequestResponse<CharacteristicResult>> {
-		return this.request.get(qs, CharacteristicTerms, filters, FiltersTerms);
+		return this.request.get('search', qs, CharacteristicTerms, filters, FiltersTerms);
 	}
 
 	/**
@@ -45,6 +45,16 @@ export class Powo {
 	 * @param {array} filters Array of filters available in the APIs. 
 	 */
 	geography(qs: GeographyQuery, filters: string[] = []): Observable<RxHttpRequestResponse<GeographyResult>> {
-		return this.request.get(qs, GeographyTerms, filters, FiltersTerms);
+		return this.request.get('search', qs, GeographyTerms, filters, FiltersTerms);
+	}
+
+	/**
+	 * Search for individual record.
+	 * @param {string} id Taxon Id 
+	 * @param {object} qs Extra data. Currently you can only retrieve distribution data, but other data should be exposed in the future.
+	 */
+	lookup(id: string, qs: { [key: string]: any }) {
+		qs.include =  qs.include.join(',');
+		return this.request.get(`taxon/${id.trim()}`, qs, LookupTerms);
 	}
 }

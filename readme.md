@@ -311,6 +311,7 @@ powo.name(
 You can access the status code.
 **Sample**
 ```javascript
+// Inpi or Powo classes
 ipni
 	.name({ genus: 'Poa', species: 'annua' })
 	.toPromise()

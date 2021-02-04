@@ -33,3 +33,7 @@ export enum FiltersTerms {
 	infraspecies = 'infraspecific_f',
 	species = 'species_f'
 }
+
+export enum LookupTerms {
+	include = 'fields'
+}

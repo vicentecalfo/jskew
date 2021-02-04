@@ -23,13 +23,14 @@ export class Request {
 	 * @returns {Observable}
 	 */
 	get(
+		endpoint: string,
 		qs: { [key: string]: any },
 		qsTerms: any,
-		filters: string[],
-		filterTerms: any
+		filters: string[] = [],
+		filterTerms: any = null
 	): Observable<RxHttpRequestResponse<any>> {
 		qs = this.buildQuery(qs, qsTerms, filters, filterTerms);
-		return RxHR.get(this.basePath, { qs, json: true });
+		return RxHR.get(`${this.basePath}/${endpoint}`, { qs, json: true });
 	}
 
 	/**
@@ -38,8 +39,9 @@ export class Request {
 	 * @param terms Query terms of the module. The request parameters are different from the input parameters of the function, so it is necessary to inform a dictionary to do the translation.
 	 */
 	private formatQuery(qs: any, terms: any): { [key: string]: any } {
+		const paramsKey = Object.keys(qs);
 		const query: any = {};
-		Object.keys(qs).forEach((term: string) => (query[terms[term]] = qs[term]));
+		if (paramsKey.length > 0) paramsKey.forEach((term: string) => (query[terms[term]] = qs[term]));
 		return query;
 	}
 
