@@ -12,13 +12,13 @@ export interface CharacteristicQuery {
 }
 
 export interface CharacteristicResult {
-	totalResults?: number;
-	page?: number;
-	totalPages?: number;
-	perPage?: number;
 	cursor?: string;
 	message?: string;
+	page?: number;
+	perPage?: number;
 	results?: Characteristic[];
+	totalPages?: number;
+	totalResults?: number;
 }
 
 export interface Characteristic {
@@ -35,7 +35,7 @@ export interface Characteristic {
 }
 
 export interface Image {
-	thumbnail?: string;
-	fullsize?: string;
 	caption?: string;
+	fullsize?: string;
+	thumbnail?: string;
 }

@@ -9,39 +9,39 @@ export interface NameQuery {
 }
 
 export interface NameResult {
-	totalResults?: number;
-	page?: number;
-	totalPages?: number;
-	perPage?: number;
 	cursor?: string;
 	message?: string;
+	page?: number;
+	perPage?: number;
 	results?: Name[];
+	totalPages?: number;
+	totalResults?: number;
 }
 
 export interface Name {
 	accepted?: boolean;
 	author?: string;
-	kingdom?: string;
 	family?: string;
+	fqId?: string;
+	images?: Image[];
+	kingdom?: string;
 	name?: string;
 	rank?: string;
 	snippet?: string;
-	url?: string;
-	fqId?: string;
-	images?: Image[];
 	synonymOf?: SynonymOf;
+	url?: string;
 }
 
 export interface Image {
-	thumbnail?: string;
-	fullsize?: string;
 	caption?: string;
+	fullsize?: string;
+	thumbnail?: string;
 }
 
 export interface SynonymOf {
 	accepted?: boolean;
 	author?: string;
+	fqId?: string;
 	name?: string;
 	url?: string;
-	fqId?: string;
 }

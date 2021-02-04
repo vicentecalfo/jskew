@@ -6,19 +6,42 @@ import { PubQuery, PubResult } from './pub.interface';
 import { AuthorTerms, FiltersTerms, NameTerms, PubTerms } from './terms';
 import { Request } from '../request';
 
+/**
+ * Class for searching IPNI data and looking up individual records (https://www.ipni.org/).
+ * @class
+ * @public
+ */
 export class Ipni {
 	private request = new Request('http://beta.ipni.org/api/1/search');
+	/**
+	 * @constructor
+	 */
 	constructor() {}
 
+	/**
+	 * Search data in the "name" module.
+	 * @param {object} qs Object containing querystring values to be appended to the uri.
+	 * @param {array} filters Array of filters available in the APIs. 
+	 */
 	name(qs: NameQuery, filters: string[] = []): Observable<RxHttpRequestResponse<NameResult>> {
 		return this.request.get(qs, NameTerms, filters, FiltersTerms);
 	}
 
+	/**
+	 * Search data in the "author" module.
+	 * @param {object} qs Object containing querystring values to be appended to the uri.
+	 * @param {array} filters Array of filters available in the APIs. 
+	 */
 	author(qs: AuthorQuery, filters: string[] = []): Observable<RxHttpRequestResponse<AuthorResult>> {
 		return this.request.get(qs, AuthorTerms, filters, FiltersTerms);
-    }
-    
-    pub(qs: PubQuery, filters: string[] = []): Observable<RxHttpRequestResponse<PubResult>> {
+	}
+
+	/**
+	 * Search data in the "publication" module.
+	 * @param {object} qs Object containing querystring values to be appended to the uri.
+	 * @param {array} filters Array of filters available in the APIs. 
+	 */
+	pub(qs: PubQuery, filters: string[] = []): Observable<RxHttpRequestResponse<PubResult>> {
 		return this.request.get(qs, PubTerms, filters, FiltersTerms);
 	}
 }

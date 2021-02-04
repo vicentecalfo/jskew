@@ -9,7 +9,6 @@ export enum NameTerms {
 }
 
 export enum CharacteristicTerms {
-	summary = 'summary',
 	appearance = 'appearance',
 	characteristic = 'characteristic',
 	cloning = 'cloning',
@@ -18,6 +17,7 @@ export enum CharacteristicTerms {
 	inflorescence = 'inflorescence',
 	leaf = 'leaf',
 	seed = 'seed',
+	summary = 'summary',
 	use = 'use'
 }
 
