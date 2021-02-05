@@ -18,6 +18,7 @@ export interface PubResult {
 	results?: Publication[];
 	totalPages?: number;
 	totalResults?: number;
+	cursor?: any;
 }
 
 export interface Publication {

@@ -61,7 +61,7 @@ export class Request {
 	 * @param filters Array of filters available in the APIs.
 	 * @param filterTerms Query terms of the module. The request parameters are different from the input parameters of the function, so it is necessary to inform a dictionary to do the translation.
 	 */
-	private buildQuery(qs: any, qsTerms: any, filters: string[], filterTerms: any): { [key: string]: any } {
+	private buildQuery(qs: any, qsTerms: any, filters: string[] = [], filterTerms: any = {}): { [key: string]: any } {
 		qs = this.formatQuery(qs, qsTerms);
 		if (filters.length !== 0) qs.f = this.formatFilters(filters, filterTerms).join(',');
 		qs.perPage = this.limitPerPage;

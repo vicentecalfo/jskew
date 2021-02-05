@@ -11,6 +11,7 @@ export interface AuthorResult {
 	results?: Author[];
 	totalPages?: number;
 	totalResults?: number;
+	cursor?: any;
 }
 
 export interface Author {

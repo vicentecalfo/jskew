@@ -1,4 +1,4 @@
-export enum NameTerms {
+export enum IpniTerms {
 	added = 'added',
 	author = 'name author',
 	basionym = 'basionym',
@@ -24,17 +24,9 @@ export enum NameTerms {
 	scientific_name = 'scientific name',
 	species = 'species',
 	species_author = 'species author',
-	version = 'version'
-}
-
-export enum AuthorTerms {
+	version = 'version',
 	forename = 'author forename',
-	full_name = 'author name',
-	standard_form = 'author std',
-	surname = 'author surname'
-}
-
-export enum PubTerms {
+	surname = 'author surname',
 	bph_number = 'bph number',
 	date = 'date',
 	isbn = 'isbn',

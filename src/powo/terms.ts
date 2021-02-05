@@ -1,14 +1,11 @@
-export enum NameTerms {
+export enum PowoTerms {
 	author = 'author',
 	common_name = 'common name',
 	family = 'family',
 	full_name = 'name',
 	genus = 'genus',
 	kingdom = 'kingdom',
-	species = 'species'
-}
-
-export enum CharacteristicTerms {
+	species = 'species',
 	appearance = 'appearance',
 	characteristic = 'characteristic',
 	cloning = 'cloning',
@@ -18,10 +15,7 @@ export enum CharacteristicTerms {
 	leaf = 'leaf',
 	seed = 'seed',
 	summary = 'summary',
-	use = 'use'
-}
-
-export enum GeographyTerms {
+	use = 'use',
 	distribution = 'location'
 }
 

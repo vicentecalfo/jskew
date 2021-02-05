@@ -33,6 +33,7 @@ export interface NameResult {
 	results?: Name[];
 	totalPages?: number;
 	totalResults?: number;
+	cursor?: any;
 }
 
 export interface Name {
