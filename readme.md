@@ -307,6 +307,33 @@ powo.name(
 * species
 * infraspecies
 
+### Individual record
+```javascript
+    powo.lookup('urn:lsid:ipni.org:names:320035-2')
+        .subscribe(
+            (data) => console.log(data.body),
+            (error) => console.log(error)
+        );
+```
+
+#### Extra data
+
+The standard data returned by the POWO api includes taxonomic and nomenclatural information, but there are other data you can request.
+
+Currently you can only retrieve `distribution` data, but other data should be exposed in the future.
+
+```javascript
+    powo
+        .lookup(
+            'urn:lsid:ipni.org:names:320035-2',
+            { include: ['distribution'] }
+        )
+        .subscribe(
+            (data) => console.log(data.body),
+            (error) => console.log(error)
+        );
+```
+
 ### API error handling
 You can access the status code.
 **Sample**
@@ -322,3 +349,7 @@ ipni
 	})
 	.catch((error) => console.log(error));
 ```
+
+## Additional information
+* This package is **not official** form the Royal Botanic Gardens, Kew.
+* The documentation for this package is very similar to the official package written in python ([pykew](https://pypi.org/project/pykew/)), due to the similarity of features.
